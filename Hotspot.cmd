@@ -34,7 +34,8 @@ goto start
 :manage
 @echo off 
 set hasClients=0
-arp -a | findstr /r "192\.168\.[0-9][0-9][0-9]\.[0-9][0-9][^0-9]" >test.tmp
+arp -a | findstr /r "192\.168\.[0-9]*\.[2-9][^0-9] 192\.168\.[0-9]*\.[0-9][0-9][^0-9] 192\.168\.[0-9]*\.[0-1][0-9][0-9]" >test.tmp
+arp -a | findstr /r "192\.168\.[0-9]*\.2[0-46-9][0-9] 192\.168\.[0-9]*\.25[0-4]" >>test.tmp
 for /F "tokens=1,2,3" %%i in (test.tmp) do call :process %%i %%j %%k
 del test.tmp
 echo Connected Clients
